@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+  <meta charset="utf-8">
+  <title>NOTICIAS GTA VI</title>
+  <link rel="stylesheet" href="./Untitled-1.css">
+  <style>body { background-color: rgb(185, 201, 174); }</style>
+</head>
+<body>
+  <h1>Página web Dedicada a noticias de GTA VI y más cosas</h1>
+  <h2>Tenemos requisitos Para GTA VI y serán los siguientes</h2>
+  <h3>Aclaración: los siguientes mínimos no son oficiales</h3>
+  <img src="requisitos.png" alt="Requisitos minimos GTA VI">
+  <h1>Ahora estos serán los siguientes requisitos recomendados</h1>
+  <img src="requisitoRecomendado.png" alt="Requisitos recomendados GTA VI">
+  <h2>Fecha de lanzamiento aproximada:</h2>
+  <p>Se tiene una fecha aproximada de El título GTA VI y se especula que saldrá el 19 de noviembre de 2026, lo confirmó Rockstar Games.</p>
+  <img src="FECHALANZA.jpg" alt="Fecha de lanzamiento GTA VI">
+
+  <h1>PREVENTA :0 de gta Vi y saldra para estas plataformas:</h1>
+
+  <img src="platafotmas.jpg" alt="plataformas_gtavi">
+  <p>Pero la pregunta es y que muchos estan interesados 
+    en Si este juego tendra Lanzamiento en pc y  y la respuesta es....... si pero se ha hablado mucho de 
+    ello los desarrolladores de Rockstar Games han dicho que el juego saldra para pc pero no se sabe la fecha exacta de lanzamiento para pc
+
+  </p>
+  <script src="./Untitled-2.js"></script>
+  <input type="button" id="button" value="SUSCRIBETE PARA NOTICIAS ULTRA ESPECIFICAS POR SOLO 2.99 USD AL MES">
+  <div id="miFormulario">
+  <form id="miFormulario">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <input type="submit" value="Suscribirse">
+  </form>
+  </div>
+  <div>
+  <form id="formularioTarjeta">
+    <label for="numeroTarjeta">Número de tarjeta:</label><br>
+    <input type="text" id="Tarjeta" placeholder="1234 5679 9012 4356"> maxlenght="19" required><br><br>
+  
+    <label for="exp">Fecha de expiración:</label><br>
+    <input type="text" id="fechaExpiracion" placeholder="MM/AA"> maxlenght="5" required><br><br>
+    <label for="codigoSeguridad">Código de seguridad:</label><br>
+    <input type="text" id="password" placeholder="123"> maxlenght="4" required><br><br>
+    <input type="submit" value="¡Confirmar Pago!">
+  </form>
+  </body>
+</div>
+<script>document.getElementById('formularioTarjeta').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('¡Pago confirmado!');
+    document.getElementById('formularioTarjeta').style.display = 'none';
+    document.getElementById('formularioTarjeta').style.display = 'block';
+});</script>
+</body>
+</html>
