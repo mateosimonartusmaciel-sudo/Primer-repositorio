@@ -1,0 +1,608 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    min-height: 140px;
+    background-color: #000000;
+    border-bottom: 2px solid #ff00cc;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px;
+}
+
+.logo img {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+}
+
+.boton-busqueda,
+.boton-menu {
+    border: none;
+    cursor: pointer;
+}
+
+.boton-busqueda {
+    background: transparent;
+    color: #ff00cc;
+    font-size: 26px;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.boton-menu {
+    width: 50px;
+    height: 50px;
+
+    background-color: #d900ff;
+    color: white;
+
+    border-radius: 4px;
+
+    font-size: 24px;
+}
+
+
+/* =========================
+   REDES SOCIALES
+========================= */
+
+.redes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+
+    padding: 10px;
+    background-color: #000000;
+}
+
+.redes a {
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #242424;
+    border-radius: 4px;
+
+    color: #ff00cc;
+    background-color: #090909;
+
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+.redes a:hover {
+    border-color: #ff00cc;
+    color: #ffffff;
+}
+
+
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+
+main {
+    width: 100%;
+    background-color: #000000;
+}
+
+section {
+    width: 100%;
+    padding: 35px 15px;
+}
+
+
+/* =========================
+   CONTADOR
+========================= */
+
+.contador {
+    text-align: center;
+}
+
+.contador > p:first-child {
+    color: #ff00cc;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 25px;
+}
+
+.contador-numeros {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    max-width: 420px;
+    margin: 0 auto 30px;
+}
+
+.contador-numeros div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contador-numeros strong {
+    color: #ffffff;
+    font-size: 30px;
+    line-height: 1;
+}
+
+.contador-numeros span {
+    margin-top: 8px;
+
+    color: #888888;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.estado {
+    color: #888888;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.estado strong {
+    color: #00eaff;
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   NOTICIAS
+========================= */
+
+.noticias h2,
+.requisitos h2,
+.lanzamiento h2,
+.plataformas h2,
+.premium h2,
+.contacto h2 {
+    color: #ffffff;
+
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.noticias h2::after,
+.requisitos h2::after,
+.lanzamiento h2::after,
+.plataformas h2::after,
+.premium h2::after,
+.contacto h2::after {
+    content: "";
+    display: block;
+
+    width: 50px;
+    height: 3px;
+
+    background-color: #ff00cc;
+
+    margin-top: 8px;
+}
+
+
+/* =========================
+   TARJETA DE NOTICIA
+========================= */
+
+.noticia {
+    overflow: hidden;
+
+    margin-bottom: 20px;
+
+    background-color: #0b0b0b;
+
+    border: 1px solid #292929;
+    border-radius: 7px;
+
+    transition: 0.3s;
+}
+
+.noticia:hover {
+    border-color: #ff00cc;
+}
+
+.noticia img {
+    width: 100%;
+    height: 210px;
+
+    object-fit: cover;
+}
+
+.noticia-contenido {
+    padding: 20px;
+}
+
+.categoria {
+    color: #00eaff;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.noticia h3 {
+    color: #ffffff;
+
+    font-size: 23px;
+    line-height: 1.2;
+
+    margin: 10px 0;
+}
+
+.noticia p {
+    color: #aaaaaa;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.noticia a {
+    color: #ff00cc;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   REQUISITOS
+========================= */
+
+.requisitos {
+    background-color: #000000;
+}
+
+.requisitos > p,
+.lanzamiento p,
+.plataformas p,
+.premium > p {
+    color: #aaaaaa;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.requisitos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.requisitos-grid article {
+    background-color: #090909;
+
+    border: 1px solid #292929;
+    border-radius: 7px;
+
+    padding: 20px;
+}
+
+.requisitos-grid h3 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   LANZAMIENTO
+========================= */
+
+.lanzamiento img {
+    width: 100%;
+    max-height: 400px;
+
+    object-fit: cover;
+
+    border-radius: 7px;
+    border: 1px solid #292929;
+}
+
+
+/* =========================
+   PLATAFORMAS
+========================= */
+
+.plataformas img {
+    width: 100%;
+    margin-bottom: 20px;
+
+    border-radius: 7px;
+    border: 1px solid #292929;
+}
+
+
+/* =========================
+   PREMIUM
+========================= */
+
+.premium {
+    background-color: #050505;
+
+    border-top: 1px solid #1d1d1d;
+    border-bottom: 1px solid #1d1d1d;
+}
+
+.precio {
+    color: #00eaff !important;
+
+    font-size: 25px !important;
+    font-weight: bold;
+}
+
+#button {
+    width: 100%;
+
+    padding: 15px;
+
+    background-color: #d900ff;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 5px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#button:hover {
+    background-color: #ff00cc;
+}
+
+
+/* =========================
+   FORMULARIOS
+========================= */
+
+#formularioSuscripcion,
+#formularioContacto {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+#formularioSuscripcion label,
+#formularioContacto label {
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#formularioSuscripcion input,
+#formularioContacto input,
+#formularioContacto textarea {
+    width: 100%;
+
+    padding: 13px;
+
+    background-color: #0b0b0b;
+    color: #ffffff;
+
+    border: 1px solid #333333;
+    border-radius: 5px;
+
+    outline: none;
+}
+
+#formularioSuscripcion input:focus,
+#formularioContacto input:focus,
+#formularioContacto textarea:focus {
+    border-color: #ff00cc;
+}
+
+#formularioSuscripcion button,
+#formularioContacto button {
+    padding: 14px;
+
+    background-color: #ff00cc;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 5px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#formularioContacto textarea {
+    resize: vertical;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 30px 15px;
+
+    background-color: #000000;
+
+    border-top: 1px solid #222222;
+
+    text-align: center;
+}
+
+footer p {
+    color: #777777;
+    font-size: 12px;
+
+    margin-bottom: 5px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (min-width: 768px) {
+
+    section {
+        padding: 50px 40px;
+    }
+
+    .redes {
+        grid-template-columns: repeat(4, 1fr);
+
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .requisitos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .noticia {
+        display: grid;
+        grid-template-columns: 40% 60%;
+    }
+
+    .noticia img {
+        height: 100%;
+        min-height: 250px;
+    }
+
+}
+
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 1024px) {
+
+    .header {
+        padding: 15px 60px;
+    }
+
+    .logo img {
+        width: 90px;
+        height: 90px;
+    }
+
+    section {
+        max-width: 1200px;
+        margin: auto;
+        padding: 60px 30px;
+    }
+
+    .redes {
+        max-width: 1100px;
+        padding: 15px 30px;
+    }
+
+    .contador-numeros strong {
+        font-size: 45px;
+    }
+
+    .noticias {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .noticias h2 {
+        grid-column: 1 / -1;
+    }
+
+    .noticia {
+        display: block;
+        margin-bottom: 0;
+    }
+
+    .noticia img {
+        height: 220px;
+    }
+
+    .requisitos-grid {
+        gap: 30px;
+    }
+
+    #button {
+        width: auto;
+        padding: 15px 35px;
+    }
+
+        }
+
+
+        /* =========================
+        PANTALLAS GRANDES
+        ========================= */
+
+        @media (min-width: 1400px) {
+
+            .header {
+                padding-left: 100px;
+                padding-right: 100px;
+            }
+
+            section {
+                max-width: 1300px;
+            }
+
+        }

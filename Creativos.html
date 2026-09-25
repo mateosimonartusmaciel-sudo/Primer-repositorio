@@ -1,58 +1,380 @@
 <!DOCTYPE html>
 <html lang="es">
-  <meta charset="utf-8">
-  <title>NOTICIAS GTA VI</title>
-  <link rel="stylesheet" href="./Untitled-1.css">
-  <style>body { background-color: rgb(185, 201, 174); }</style>
-</head>
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GTA VI Noticias</title>
+
+    <link rel="stylesheet" href="CSS/Untitled-1.css">
+
 <body>
-  <h1>Página web Dedicada a noticias de GTA VI y más cosas</h1>
-  <h2>Tenemos requisitos Para GTA VI y serán los siguientes</h2>
-  <h3>Aclaración: los siguientes mínimos no son oficiales</h3>
-  <img src="requisitos.png" alt="Requisitos minimos GTA VI">
-  <h1>Ahora estos serán los siguientes requisitos recomendados</h1>
-  <img src="requisitoRecomendado.png" alt="Requisitos recomendados GTA VI">
-  <h2>Fecha de lanzamiento aproximada:</h2>
-  <p>Se tiene una fecha aproximada de El título GTA VI y se especula que saldrá el 19 de noviembre de 2026, lo confirmó Rockstar Games.</p>
-  <img src="FECHALANZA.jpg" alt="Fecha de lanzamiento GTA VI">
 
-  <h1>PREVENTA :0 de gta Vi y saldra para estas plataformas:</h1>
+    <!-- ================= HEADER ================= -->
 
-  <img src="platafotmas.jpg" alt="plataformas_gtavi">
-  <p>Pero la pregunta es y que muchos estan interesados 
-    en Si este juego tendra Lanzamiento en pc y  y la respuesta es....... si pero se ha hablado mucho de 
-    ello los desarrolladores de Rockstar Games han dicho que el juego saldra para pc pero no se sabe la fecha exacta de lanzamiento para pc
+    <header class="header">
 
-  </p>
-  <script src="./Untitled-2.js"></script>
-  <input type="button" id="button" value="SUSCRIBETE PARA NOTICIAS ULTRA ESPECIFICAS POR SOLO 2.99 USD AL MES">
-  <div id="miFormulario">
-  <form id="miFormulario">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email">
-    <input type="submit" value="Suscribirse">
-  </form>
-  </div>
-  <div>
-  <form id="formularioTarjeta">
-    <label for="numeroTarjeta">Número de tarjeta:</label><br>
-    <input type="text" id="Tarjeta" placeholder="1234 5679 9012 4356"> maxlenght="19" required><br><br>
-  
-    <label for="exp">Fecha de expiración:</label><br>
-    <input type="text" id="fechaExpiracion" placeholder="MM/AA"> maxlenght="5" required><br><br>
-    <label for="codigoSeguridad">Código de seguridad:</label><br>
-    <input type="text" id="password" placeholder="123"> maxlenght="4" required><br><br>
-    <input type="submit" value="¡Confirmar Pago!">
-  </form>
-  </body>
-</div>
-<script>document.getElementById('formularioTarjeta').addEventListener('submit', function(event) {
-    event.preventDefault();
-    alert('¡Pago confirmado!');
-    document.getElementById('formularioTarjeta').style.display = 'none';
-    document.getElementById('formularioTarjeta').style.display = 'block';
-});</script>
+        <div class="logo">
+            <img src="img/logo.png" alt="GTA VI Noticias">
+        </div>
+
+        <button class="boton-busqueda">
+            🔍
+        </button>
+
+        <button class="boton-menu">
+            ☰
+        </button>
+
+    </header>
+
+
+    <!-- ================= REDES ================= -->
+
+    <nav class="redes">
+
+        <a href="#">Instagram</a>
+
+        <a href="#">X / Twitter</a>
+
+        <a href="#">TikTok</a>
+
+        <a href="#">YouTube</a>
+
+    </nav>
+
+
+    <!-- ================= CONTENIDO PRINCIPAL ================= -->
+
+    <main>
+
+
+        <!-- ================= CONTADOR ================= -->
+
+        <section class="contador">
+
+            <p>OBJETIVO: 19 NOVIEMBRE 2026</p>
+
+            <div class="contador-numeros">
+
+                <div>
+                    <strong>54</strong>
+                    <span>DÍAS</span>
+                </div>
+
+                <div>
+                    <strong>9</strong>
+                    <span>HORAS</span>
+                </div>
+
+                <div>
+                    <strong>9</strong>
+                    <span>MIN</span>
+                </div>
+
+                <div>
+                    <strong>8</strong>
+                    <span>SEG</span>
+                </div>
+
+            </div>
+
+            <p class="estado">
+                🟢 GTA VI: <strong>EN PROGRESO</strong>
+            </p>
+
+        </section>
+
+
+        <!-- ================= NOTICIAS ================= -->
+
+        <section class="noticias">
+
+            <h2>ÚLTIMAS NOTICIAS</h2>
+
+
+            <article class="noticia">
+
+                <img
+                    src="img/noticia1.jpg"
+                    alt="Noticia GTA VI"
+                >
+
+                <div class="noticia-contenido">
+
+                    <span class="categoria">
+                        GTA VI
+                    </span>
+
+                    <h3>
+                        ¿Por qué no sale nunca GTA VI?
+                    </h3>
+
+                    <p>
+                        Todas las novedades sobre el lanzamiento
+                        de GTA VI.
+                    </p>
+
+                    <a href="#">
+                        Leer noticia →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="noticia">
+
+                <img
+                    src="img/noticia2.jpg"
+                    alt="Nueva noticia GTA VI"
+                >
+
+                <div class="noticia-contenido">
+
+                    <span class="categoria">
+                        NOVEDADES
+                    </span>
+
+                    <h3>
+                        Todo lo que sabemos sobre GTA VI
+                    </h3>
+
+                    <p>
+                        Información y novedades del próximo
+                        Grand Theft Auto.
+                    </p>
+
+                    <a href="#">
+                        Leer noticia →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- ================= REQUISITOS ================= -->
+
+        <section class="requisitos">
+
+            <h2>REQUISITOS DE GTA VI</h2>
+
+            <p>
+                Estos requisitos son estimaciones y
+                no representan información oficial.
+            </p>
+
+
+            <div class="requisitos-grid">
+
+                <article>
+
+                    <h3>Requisitos mínimos</h3>
+
+                    <img
+                        src="img/requisitos.png"
+                        alt="Requisitos mínimos GTA VI"
+                    >
+
+                </article>
+
+
+                <article>
+
+                    <h3>Requisitos recomendados</h3>
+
+                    <img
+                        src="img/requisitoRecomendado.png"
+                        alt="Requisitos recomendados GTA VI"
+                    >
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LANZAMIENTO ================= -->
+
+        <section class="lanzamiento">
+
+            <h2>
+                FECHA DE LANZAMIENTO
+            </h2>
+
+            <p>
+                Se especula que GTA VI será lanzado
+                el 19 de noviembre de 2026.
+            </p>
+
+            <img
+                src="img/FECHALANZA.jpg"
+                alt="Fecha de lanzamiento de GTA VI"
+            >
+
+        </section>
+
+
+        <!-- ================= PLATAFORMAS ================= -->
+
+        <section class="plataformas">
+
+            <h2>
+                PLATAFORMAS Y PREVENTA
+            </h2>
+
+            <img
+                src="img/platafotmas.jpg"
+                alt="Plataformas de GTA VI"
+            >
+
+            <p>
+                Muchos están interesados en saber si
+                GTA VI tendrá lanzamiento en PC.
+            </p>
+
+        </section>
+
+
+        <!-- ================= PREMIUM ================= -->
+
+        <section class="premium">
+
+            <h2>
+                CONTENIDO PREMIUM
+            </h2>
+
+            <p>
+                Accedé a contenido exclusivo y
+                noticias premium de GTA VI.
+            </p>
+
+            <p class="precio">
+                USD 2.99 / mes
+            </p>
+
+            <button id="button">
+                SUSCRIBIRME
+            </button>
+
+
+            <form id="formularioSuscripcion">
+
+                <label for="nombre">
+                    Nombre
+                </label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    required
+                >
+
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                >
+
+
+                <button type="submit">
+                    Suscribirse
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= CONTACTO ================= -->
+
+        <section class="contacto">
+
+            <h2>
+                CONTACTO
+            </h2>
+
+            <form id="formularioContacto">
+
+                <label for="nombreContacto">
+                    Nombre
+                </label>
+
+                <input
+                    type="text"
+                    id="nombreContacto"
+                    required
+                >
+
+
+                <label for="emailContacto">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="emailContacto"
+                    required
+                >
+
+
+                <label for="mensaje">
+                    Mensaje
+                </label>
+
+                <textarea
+                    id="mensaje"
+                    rows="5"
+                    required
+                ></textarea>
+
+
+                <button type="submit">
+                    ENVIAR MENSAJE
+                </button>
+
+            </form>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 GTA VI Noticias
+        </p>
+
+        <p>
+            Noticias y novedades sobre GTA VI
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/Untitled-2.js"></script>
+
 </body>
+
 </html>
