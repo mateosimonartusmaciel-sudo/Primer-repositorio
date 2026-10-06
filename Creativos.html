@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="CSS/Untitled-1.css">
 
+</head>
+
 <body>
 
     <!-- ================= HEADER ================= -->
@@ -17,7 +19,7 @@
     <header class="header">
 
         <div class="logo">
-            <img src="img/logo.png" alt="GTA VI Noticias">
+            <img src="img/logo.webp" alt="GTA VI Noticias">
         </div>
 
         <button class="boton-busqueda">
@@ -53,6 +55,7 @@
 
         <!-- ================= CONTADOR ================= -->
 
+
         <section class="contador">
 
             <p>OBJETIVO: 19 NOVIEMBRE 2026</p>
@@ -60,22 +63,22 @@
             <div class="contador-numeros">
 
                 <div>
-                    <strong>54</strong>
+                    <strong id="dias">54</strong>
                     <span>DÍAS</span>
                 </div>
 
                 <div>
-                    <strong>9</strong>
+                    <strong id="horas">9</strong>
                     <span>HORAS</span>
                 </div>
 
                 <div>
-                    <strong>9</strong>
+                    <strong id="minutos">9</strong>
                     <span>MIN</span>
                 </div>
 
                 <div>
-                    <strong>8</strong>
+                    <strong id="segundos">8</strong>
                     <span>SEG</span>
                 </div>
 
@@ -97,10 +100,7 @@
 
             <article class="noticia">
 
-                <img
-                    src="img/noticia1.jpg"
-                    alt="Noticia GTA VI"
-                >
+                <img src="img/cuando.webp" alt="Noticia GTA VI">
 
                 <div class="noticia-contenido">
 
@@ -128,10 +128,7 @@
 
             <article class="noticia">
 
-                <img
-                    src="img/noticia2.jpg"
-                    alt="Nueva noticia GTA VI"
-                >
+                <img src="img/loquesabemos.webp" alt="Nueva noticia GTA VI">
 
                 <div class="noticia-contenido">
 
@@ -178,10 +175,7 @@
 
                     <h3>Requisitos mínimos</h3>
 
-                    <img
-                        src="img/requisitos.png"
-                        alt="Requisitos mínimos GTA VI"
-                    >
+                    <img src="img/requisitos.webp" alt="Requisitos mínimos GTA VI">
 
                 </article>
 
@@ -190,10 +184,7 @@
 
                     <h3>Requisitos recomendados</h3>
 
-                    <img
-                        src="img/requisitoRecomendado.png"
-                        alt="Requisitos recomendados GTA VI"
-                    >
+                    <img src="img/requisitoRecomendado.webp" alt="Requisitos recomendados GTA VI">
 
                 </article>
 
@@ -215,10 +206,7 @@
                 el 19 de noviembre de 2026.
             </p>
 
-            <img
-                src="img/FECHALANZA.jpg"
-                alt="Fecha de lanzamiento de GTA VI"
-            >
+            <img src="img/FECHALANZA.webp" alt="Fecha de lanzamiento de GTA VI">
 
         </section>
 
@@ -231,10 +219,7 @@
                 PLATAFORMAS Y PREVENTA
             </h2>
 
-            <img
-                src="img/platafotmas.jpg"
-                alt="Plataformas de GTA VI"
-            >
+            <img src="img/comparacion.webp" alt="Plataformas de GTA VI">
 
             <p>
                 Muchos están interesados en saber si
@@ -261,10 +246,9 @@
                 USD 2.99 / mes
             </p>
 
-            <button id="button">
+            <button id="botonSuscripcion">
                 SUSCRIBIRME
             </button>
-
 
             <form id="formularioSuscripcion">
 
@@ -272,25 +256,14 @@
                     Nombre
                 </label>
 
-                <input
-                    type="text"
-                    id="nombre"
-                    name="nombre"
-                    required
-                >
+                <input type="text" id="nombre" name="nombre" required>
 
 
                 <label for="email">
                     Email
                 </label>
 
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                >
-
+                <input type="email" id="email" name="email" required>
 
                 <button type="submit">
                     Suscribirse
@@ -315,33 +288,21 @@
                     Nombre
                 </label>
 
-                <input
-                    type="text"
-                    id="nombreContacto"
-                    required
-                >
+                <input type="text" id="nombreContacto" required>
 
 
                 <label for="emailContacto">
                     Email
                 </label>
 
-                <input
-                    type="email"
-                    id="emailContacto"
-                    required
-                >
+                <input type="email" id="emailContacto" required>
 
 
                 <label for="mensaje">
                     Mensaje
                 </label>
 
-                <textarea
-                    id="mensaje"
-                    rows="5"
-                    required
-                ></textarea>
+                <textarea id="mensaje" rows="5" required></textarea>
 
 
                 <button type="submit">
