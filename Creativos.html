@@ -454,6 +454,169 @@
 
             </div>
 
+            <!-- ================= ANALIZADOR DE PC CON IA (WEB APP) ================= -->
+            <div class="analizador-ia-contenedor" id="analizador-ia">
+                <div class="analizador-header">
+                    <span class="badge-ia">✨ IA POWERED</span>
+                    <h3>¿CORRERÁ GTA VI EN TU PC?</h3>
+                    <p>Ingresá los componentes de tu computadora y nuestra inteligencia artificial calculará los FPS estimados, la calidad gráfica ideal y posibles cuellos de botella en Vice City.</p>
+                </div>
+
+                <form id="formularioAnalizadorPC" class="analizador-form">
+                    <div class="analizador-inputs-grid">
+                        <div class="campo-pc">
+                            <label for="cpuInput">🧠 Procesador (CPU)</label>
+                            <input type="text" id="cpuInput" list="lista-cpu" placeholder="Ej: Ryzen 5 5600X o Intel i5-12400F" required autocomplete="off">
+                            <datalist id="lista-cpu">
+                                <option value="AMD Ryzen 3 3200G">
+                                <option value="AMD Ryzen 5 3600">
+                                <option value="AMD Ryzen 5 5500">
+                                <option value="AMD Ryzen 5 5600X">
+                                <option value="AMD Ryzen 7 5700X">
+                                <option value="AMD Ryzen 7 5800X3D">
+                                <option value="AMD Ryzen 5 7600X">
+                                <option value="AMD Ryzen 7 7800X3D">
+                                <option value="AMD Ryzen 9 7950X">
+                                <option value="Intel Core i3-10100F">
+                                <option value="Intel Core i5-10400F">
+                                <option value="Intel Core i5-11400F">
+                                <option value="Intel Core i3-12100F">
+                                <option value="Intel Core i5-12400F">
+                                <option value="Intel Core i5-13400F">
+                                <option value="Intel Core i5-14600K">
+                                <option value="Intel Core i7-12700K">
+                                <option value="Intel Core i7-13700K">
+                                <option value="Intel Core i7-14700K">
+                                <option value="Intel Core i9-14900K">
+                            </datalist>
+                        </div>
+
+                        <div class="campo-pc">
+                            <label for="gpuInput">🎮 Tarjeta Gráfica (GPU)</label>
+                            <input type="text" id="gpuInput" list="lista-gpu" placeholder="Ej: NVIDIA RTX 3060 o RX 6600" required autocomplete="off">
+                            <datalist id="lista-gpu">
+                                <option value="Gráficos Integrados (Vega / Intel UHD)">
+                                <option value="NVIDIA GTX 1050 Ti 4GB">
+                                <option value="NVIDIA GTX 1060 6GB">
+                                <option value="NVIDIA GTX 1650 4GB">
+                                <option value="NVIDIA GTX 1660 Super 6GB">
+                                <option value="NVIDIA RTX 2060 6GB">
+                                <option value="NVIDIA RTX 3050 8GB">
+                                <option value="NVIDIA RTX 3060 12GB">
+                                <option value="NVIDIA RTX 3060 Ti 8GB">
+                                <option value="NVIDIA RTX 3070 8GB">
+                                <option value="NVIDIA RTX 3080 10GB">
+                                <option value="NVIDIA RTX 4060 8GB">
+                                <option value="NVIDIA RTX 4060 Ti 16GB">
+                                <option value="NVIDIA RTX 4070 Super 12GB">
+                                <option value="NVIDIA RTX 4080 Super 16GB">
+                                <option value="NVIDIA RTX 4090 24GB">
+                                <option value="AMD Radeon RX 580 8GB">
+                                <option value="AMD Radeon RX 6600 8GB">
+                                <option value="AMD Radeon RX 6650 XT 8GB">
+                                <option value="AMD Radeon RX 6700 XT 12GB">
+                                <option value="AMD Radeon RX 7600 8GB">
+                                <option value="AMD Radeon RX 7700 XT 12GB">
+                                <option value="AMD Radeon RX 7800 XT 16GB">
+                                <option value="AMD Radeon RX 7900 XTX 24GB">
+                            </datalist>
+                        </div>
+
+                        <div class="campo-pc">
+                            <label for="ramSelect">⚡ Memoria RAM</label>
+                            <select id="ramSelect" required>
+                                <option value="4">4 GB</option>
+                                <option value="8">8 GB</option>
+                                <option value="12">12 GB</option>
+                                <option value="16" selected>16 GB (Recomendado)</option>
+                                <option value="32">32 GB</option>
+                                <option value="64">64 GB o más</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-pc">
+                            <label for="resolucionSelect">🖥️ Resolución Objetivo</label>
+                            <select id="resolucionSelect" required>
+                                <option value="1080p" selected>1080p (Full HD)</option>
+                                <option value="1440p">1440p (2K / QHD)</option>
+                                <option value="4k">2160p (4K Ultra HD)</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-pc">
+                            <label for="almacenamientoSelect">💾 Tipo de Disco</label>
+                            <select id="almacenamientoSelect" required>
+                                <option value="nvme" selected>SSD NVMe M.2 (Ultra rápido)</option>
+                                <option value="ssd">SSD SATA</option>
+                                <option value="hdd">Disco Duro Mecánico (HDD)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="analizador-acciones">
+                        <button type="submit" id="btnAnalizarPC" class="btn-analizar">
+                            🚀 ANALIZAR MI PC CON IA
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Estado de carga -->
+                <div id="iaCargando" class="ia-cargando oculto">
+                    <div class="spinner-neon"></div>
+                    <p id="textoCargaIA">Analizando arquitectura de CPU y GPU para el motor RAGE 9...</p>
+                </div>
+
+                <!-- Panel de Resultados -->
+                <div id="iaResultado" class="ia-resultado oculto" aria-live="polite">
+                    <div class="resultado-top">
+                        <div class="veredicto-caja">
+                            <span class="etiqueta-res">VEREDICTO IA</span>
+                            <h4 id="resVeredicto">--</h4>
+                            <p id="resSubtitulo">--</p>
+                        </div>
+
+                        <div class="fps-caja">
+                            <span class="etiqueta-res">FPS ESTIMADOS</span>
+                            <div class="fps-numero" id="resFPS">--</div>
+                            <span class="fps-nota" id="resResolucionNota">en 1080p</span>
+                        </div>
+                    </div>
+
+                    <div class="barra-rendimiento-wrap">
+                        <div class="barra-etiquetas">
+                            <span>Puntaje de compatibilidad GTA VI</span>
+                            <strong id="resPorcentaje">0%</strong>
+                        </div>
+                        <div class="barra-fondo">
+                            <div id="resBarraProgreso" class="barra-relleno" style="width: 0%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="ajustes-recomendados-grid">
+                        <div class="ajuste-item">
+                            <span>Calidad Gráfica</span>
+                            <strong id="resCalidad">--</strong>
+                        </div>
+                        <div class="ajuste-item">
+                            <span>DLSS / FSR</span>
+                            <strong id="resEscalado">--</strong>
+                        </div>
+                        <div class="ajuste-item">
+                            <span>Ray Tracing</span>
+                            <strong id="resRayTracing">--</strong>
+                        </div>
+                    </div>
+
+                    <div class="diagnostico-ia-caja">
+                        <div class="diagnostico-titulo">
+                            <span>🤖 Análisis detallado de la IA:</span>
+                            <span id="modoIABadge" class="modo-ia-badge">Motor IA Híbrido</span>
+                        </div>
+                        <div id="resExplicacionIA" class="diagnostico-texto"></div>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
 
@@ -600,9 +763,12 @@
 
     <script src="js/Untitled-2.js"></script>
 
-    <!-- BOTÓN VOLVER ARRIBA -->
-    <a href="#" class="volver-arriba" aria-label="Volver arriba">↑</a>
+ 
+   <!-- Botón volver arriba (derecha) -->
+<a href="#" class="volver-arriba" aria-label="Volver arriba">💬</a>
 
+<!-- Botón asistente virtual-->
+<a href="#contacto" class="asistente-virtual" aria-label="Abrir asistente virtual"></a>
 </body>
 
 </html>
