@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<link
-  href="https://unpkg.com/aos@2.3.4/dist/aos.css"
-  rel="stylesheet"
-/>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
 <head>
-    <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
 
-    <title>GTA VI Noticias</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="CSS/Untitled-1.css">
+        <title>GTA VI Noticias</title>
 
-</head>
+        <link rel="stylesheet" href="CSS/Untitled-1.css">
+
+    </head>
 
 <body>
 
@@ -28,16 +28,11 @@
             <img src="img/logo.webp" alt="GTA VI Noticias">
         </div>
 
-        <button class="boton-busqueda">
-            🔍
-        </button>
-
-        <button class="boton-menu">
-            ☰
-        </button>
-
+        <a href="login.html" class="btn-login">
+            <span>♙</span>
+            <span>INICIAR SESIÓN</span>
+        </a>
     </header>
-
 
     <!-- ================= BOTONES HEAD ================= -->
 
@@ -100,30 +95,30 @@
 
             <article class="noticia" id="plataformas" data-aos="zoom-in">
 
-    <img src="img/NOTICIAS/1.webp" alt="Noticia GTA VI">
+                <img src="img/NOTICIAS/1.webp" alt="Noticia GTA VI">
 
-    <div class="noticia-contenido">
+                <div class="noticia-contenido">
 
-        <span class="categoria">
-            GTA VI
-        </span>
+                    <span class="categoria">
+                        GTA VI
+                    </span>
 
-        <h3>
-            GTA VI: fecha de lanzamiento y plataformas
-        </h3>
+                    <h3>
+                        GTA VI: fecha de lanzamiento y plataformas
+                    </h3>
 
-        <p>
-            Conoce la fecha prevista para el lanzamiento de GTA VI y las plataformas en las que estará
-            disponible según la información oficial.
-        </p>
+                    <p>
+                        Conoce la fecha prevista para el lanzamiento de GTA VI y las plataformas en las que estará
+                        disponible según la información oficial.
+                    </p>
 
-        <a href="#">
-            Leer noticia →
-        </a>
+                    <a href="#">
+                        Leer noticia →
+                    </a>
 
-    </div>
+                </div>
 
-</article>
+            </article>
 
             <article class="noticia" data-aos="zoom-in">
 
@@ -464,14 +459,16 @@
                 <div class="analizador-header">
                     <span class="badge-ia">✨ IA POWERED</span>
                     <h3>¿CORRERÁ GTA VI EN TU PC?</h3>
-                    <p>Ingresá los componentes de tu computadora y nuestra inteligencia artificial calculará los FPS estimados, la calidad gráfica ideal y posibles cuellos de botella en Vice City.</p>
+                    <p>Ingresá los componentes de tu computadora y nuestra inteligencia artificial calculará los FPS
+                        estimados, la calidad gráfica ideal y posibles cuellos de botella en Vice City.</p>
                 </div>
 
                 <form id="formularioAnalizadorPC" class="analizador-form">
                     <div class="analizador-inputs-grid">
                         <div class="campo-pc">
                             <label for="cpuInput">🧠 Procesador (CPU)</label>
-                            <input type="text" id="cpuInput" list="lista-cpu" placeholder="Ej: Ryzen 5 5600X o Intel i5-12400F" required autocomplete="off">
+                            <input type="text" id="cpuInput" list="lista-cpu"
+                                placeholder="Ej: Ryzen 5 5600X o Intel i5-12400F" required autocomplete="off">
                             <datalist id="lista-cpu">
                                 <option value="AMD Ryzen 3 3200G">
                                 <option value="AMD Ryzen 5 3600">
@@ -498,7 +495,8 @@
 
                         <div class="campo-pc">
                             <label for="gpuInput">🎮 Tarjeta Gráfica (GPU)</label>
-                            <input type="text" id="gpuInput" list="lista-gpu" placeholder="Ej: NVIDIA RTX 3060 o RX 6600" required autocomplete="off">
+                            <input type="text" id="gpuInput" list="lista-gpu"
+                                placeholder="Ej: NVIDIA RTX 3060 o RX 6600" required autocomplete="off">
                             <datalist id="lista-gpu">
                                 <option value="Gráficos Integrados (Vega / Intel UHD)">
                                 <option value="NVIDIA GTX 1050 Ti 4GB">
@@ -768,12 +766,10 @@
 
     <script src="js/Untitled-2.js"></script>
 
- 
-   <!-- Botón volver arriba (derecha) -->
-<a href="#" class="volver-arriba" aria-label="Volver arriba">💬</a>
+    <!-- Botón volver arriba (derecha) -->
 
-<!-- Botón asistente virtual-->
-<a href="#contacto" class="asistente-virtual" aria-label="Abrir asistente virtual"></a>
+    <a href="#" class="volver-arriba" aria-label="Volver arriba">⮝</a>
+
 </body>
 
 </html>

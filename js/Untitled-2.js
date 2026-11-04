@@ -4,7 +4,7 @@ const boton = document.querySelector('#botonSuscripcion');
 
 console.log(boton);
 
-boton.addEventListener('click', function(event) {
+boton.addEventListener('click', function (event) {
 
     console.log(event.target);
     console.log(event.type);
@@ -16,7 +16,7 @@ boton.addEventListener('click', function(event) {
 
 const formulario = document.querySelector('#formularioSuscripcion');
 
-formulario.addEventListener('submit', function(event) {
+formulario.addEventListener('submit', function (event) {
 
     event.preventDefault();
 
@@ -34,7 +34,7 @@ formulario.addEventListener('submit', function(event) {
 
 const formularioContacto = document.querySelector('#formularioContacto');
 
-formularioContacto.addEventListener('submit', function(event) {
+formularioContacto.addEventListener('submit', function (event) {
 
     event.preventDefault();
 
@@ -330,7 +330,7 @@ Redactá un diagnóstico breve (máximo 3 párrafos cortos en español rioplaten
 const formAnalizador = document.querySelector('#formularioAnalizadorPC');
 
 if (formAnalizador) {
-    formAnalizador.addEventListener('submit', async function(event) {
+    formAnalizador.addEventListener('submit', async function (event) {
         event.preventDefault();
 
         const datosUsuario = {
@@ -388,4 +388,11 @@ if (formAnalizador) {
         cajaCargando.classList.add('oculto');
         cajaResultado.classList.remove('oculto');
     });
+
+    AOS.init({
+        duration: 600,
+        once: true,
+        offset: 80
+    });
+
 }

@@ -58,32 +58,41 @@ textarea {
     object-fit: contain;
 }
 
-.boton-busqueda,
-.boton-menu {
-    border: none;
-    cursor: pointer;
+/* Botón de acceso al administrador */
+
+.btn-login {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid #ff00b7;
+    border-radius: 6px;
+    color: #ff00b7;
+    background: #080808;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
 }
 
-.boton-busqueda {
-    background: transparent;
-    color: #ff00cc;
-    font-size: 26px;
-    margin-left: auto;
-    margin-right: 20px;
+.btn-login:hover {
+    background: #ff00b7;
+    color: #ffffff;
 }
 
-.boton-menu {
-    width: 50px;
-    height: 50px;
+/* Ajustes para celulares */
 
-    background-color: #d900ff;
-    color: white;
-
-    border-radius: 4px;
-
-    font-size: 24px;
+@media (max-width: 480px) {
+    .btn-login {
+        padding: 9px 10px;
+        font-size: 10px;
+        gap: 5px;
+        letter-spacing: 0.5px;
+    }
 }
-
 
 /* =========================
    REDES SOCIALES
@@ -149,7 +158,7 @@ section {
     text-align: center;
 }
 
-.contador > p:first-child {
+.contador>p:first-child {
     color: #ff00cc;
 
     font-size: 12px;
@@ -308,10 +317,10 @@ section {
     background-color: #000000;
 }
 
-.requisitos > p,
+.requisitos>p,
 .lanzamiento p,
 .plataformas p,
-.premium > p {
+.premium>p {
     color: #aaaaaa;
     font-size: 14px;
     margin-bottom: 20px;
@@ -846,8 +855,13 @@ a.asistente-virtual:hover {
 }
 
 @keyframes giroNeon {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 #textoCargaIA {
@@ -866,8 +880,15 @@ a.asistente-virtual:hover {
 }
 
 @keyframes aparecerSuave {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .resultado-top {
