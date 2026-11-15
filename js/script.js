@@ -1,40 +1,10 @@
-// BOTÓN DE SUSCRIPCIÓN
-
-const boton = document.querySelector('#botonSuscripcion');
-
-console.log(boton);
-
-boton.addEventListener('click', function (event) {
-
-    console.log(event.target);
-    console.log(event.type);
-
-    alert('Hola, bienvenido a la página de noticias de GTA VI');
-});
-
-// FORMULARIO DE SUSCRIPCIÓN
-
-const formulario = document.querySelector('#formularioSuscripcion');
-
-formulario.addEventListener('submit', function (event) {
-
-    event.preventDefault();
-
-    const nombre = document.querySelector('#nombre').value;
-    const email = document.querySelector('#email').value;
-
-    console.log('Nombre:', nombre);
-    console.log('Email:', email);
-
-    alert('¡Gracias por suscribirte!');
-});
-
 
 // FORMULARIO DE CONTACTO
 
+
 const formularioContacto = document.querySelector('#formularioContacto');
 
-formularioContacto.addEventListener('submit', function (event) {
+formularioContacto.addEventListener('submit', async function (event) {
 
     event.preventDefault();
 
@@ -42,11 +12,38 @@ formularioContacto.addEventListener('submit', function (event) {
     const email = document.querySelector('#emailContacto').value;
     const mensaje = document.querySelector('#mensaje').value;
 
-    console.log('Nombre:', nombre);
-    console.log('Email:', email);
-    console.log('Mensaje:', mensaje);
+    try {
 
-    alert('Mensaje enviado correctamente');
+        const respuesta = await fetch('http://localhost:3000/api/contacto', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nombre,
+                email,
+                mensaje
+            })
+        });
+
+        const datos = await respuesta.json();
+
+        if (!respuesta.ok) {
+            throw new Error(datos.mensaje);
+        }
+
+        alert('¡Mensaje enviado correctamente!');
+
+        formularioContacto.reset();
+
+    } catch (error) {
+
+        console.error('Error:', error);
+
+        alert('No se pudo enviar el mensaje. Intentá nuevamente.');
+
+    }
+
 });
 
 // CONTADOR GTA VI
@@ -387,12 +384,6 @@ if (formAnalizador) {
 
         cajaCargando.classList.add('oculto');
         cajaResultado.classList.remove('oculto');
-    });
-
-    AOS.init({
-        duration: 600,
-        once: true,
-        offset: 80
     });
 
 }

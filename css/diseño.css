@@ -377,48 +377,6 @@ section {
 
 
 /* =========================
-   PREMIUM
-========================= */
-
-.premium {
-    background-color: #050505;
-
-    border-top: 1px solid #1d1d1d;
-    border-bottom: 1px solid #1d1d1d;
-}
-
-.precio {
-    color: #00eaff !important;
-
-    font-size: 25px !important;
-    font-weight: bold;
-}
-
-#button {
-    width: 100%;
-
-    padding: 15px;
-
-    background-color: #d900ff;
-    color: #ffffff;
-
-    border: none;
-    border-radius: 5px;
-
-    font-size: 15px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-#button:hover {
-    background-color: #ff00cc;
-}
-
-
-/* =========================
    FORMULARIOS
 ========================= */
 
