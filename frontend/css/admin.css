@@ -1,0 +1,459 @@
+
+/* ESTILOS GENERALES */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #080808;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* CONTENEDOR DEL LOGIN */
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+/* TARJETA */
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+    background: #111111;
+    border: 1px solid #292929;
+    border-radius: 12px;
+    padding: 40px 35px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* LOGO */
+
+.login-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 25px;
+}
+
+/* TEXTOS */
+
+.login-subtitle {
+    color: #e000a5;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.login-card h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.login-description {
+    color: #999999;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* FORMULARIO */
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 9px;
+    color: #cccccc;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px;
+    background: #080808;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #e000a5;
+}
+
+.form-group input::placeholder {
+    color: #666666;
+}
+
+/* BOTÓN */
+
+#btnLogin {
+    width: 100%;
+    padding: 15px;
+    background: #e000a5;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#btnLogin:hover {
+    background: #b90088;
+}
+
+#btnLogin:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* MENSAJES */
+
+#mensajeLogin {
+    color: #ff5555;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+/* VOLVER AL INICIO */
+
+.volver-inicio {
+    display: inline-block;
+    margin-top: 28px;
+    color: #999999;
+    font-size: 13px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.volver-inicio:hover {
+    color: #e000a5;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 35px 22px;
+    }
+
+    .login-card h1 {
+        font-size: 24px;
+    }
+}
+
+
+/* =================================
+   PANEL DE ADMINISTRACIÓN
+================================= */
+
+.panel-container {
+    width:  min(1100px, 92%);
+    margin: 50px auto;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    padding: 30px;
+    background: #111;
+    border: 1px solid #292929;
+    border-radius: 14px;
+}
+
+.panel-header h1 {
+    color: #fff;
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+.panel-content {
+    margin-top: 30px;
+    padding: 30px;
+    background: #111;
+    border: 1px solid #292929;
+    border-radius: 14px;
+}
+
+.panel-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.panel-section-header h2 {
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.panel-section-header p {
+    color: #aaa;
+}
+
+.panel-header button,
+.panel-section-header button {
+    background: #e000a5;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 13px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.panel-header button:hover,
+.panel-section-header button:hover {
+    background: #ff20c0;
+    transform: translateY(-2px);
+}
+
+#listaNoticias {
+    color: #aaa;
+    min-height: 100px;
+    padding: 20px 0;
+}
+
+/* RESPONSIVE: TABLETS Y CELULARES */
+
+@media (max-width: 600px) {
+
+    .panel-container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .panel-header,
+    .panel-section-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .panel-header {
+        padding: 22px;
+    }
+
+    .panel-header h1 {
+        font-size: 24px;
+    }
+
+    .panel-content {
+        padding: 20px;
+    }
+
+    .panel-header button,
+    .panel-section-header button {
+        width: 100%;
+    }
+}
+
+
+/* =================================
+   FORMULARIO DE NOTICIAS
+================================= */
+
+.noticias-admin form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 25px 0;
+    padding: 25px;
+    background: #080808;
+    border: 1px solid #292929;
+    border-radius: 10px;
+}
+
+.noticias-admin form h2 {
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.noticias-admin form label {
+    color: #ccc;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.noticias-admin form input,
+.noticias-admin form textarea {
+    width: 100%;
+    padding: 13px;
+    background: #151515;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    outline: none;
+}
+
+.noticias-admin form input:focus,
+.noticias-admin form textarea:focus {
+    border-color: #e000a5;
+}
+
+.noticias-admin form textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.noticias-admin form input[type="file"] {
+    cursor: pointer;
+}
+
+.noticias-admin form button {
+    padding: 13px 18px;
+    background: #e000a5;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.noticias-admin form button:hover {
+    background: #b90088;
+}
+
+.noticias-admin form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.noticias-admin form button[type="button"] {
+    background: #292929;
+}
+
+.noticias-admin form button[type="button"]:hover {
+    background: #444;
+}
+
+/* NOTICIAS PUBLICADAS */
+
+.noticias-admin article {
+    padding: 20px;
+    margin-bottom: 15px;
+    background: #151515;
+    border: 1px solid #292929;
+    border-radius: 8px;
+}
+
+.noticias-admin article h3 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.noticias-admin article p {
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+.noticias-admin article img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 7px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+    .noticias-admin form {
+        padding: 18px;
+    }
+}
+
+/* =================================
+   CENTRO DE CONTROL / MÉTRICAS
+================================= */
+.resumen-admin {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+    margin: 22px 0 28px;
+}
+.resumen-card {
+    min-width: 0;
+    padding: 19px;
+    background: #151515;
+    border: 1px solid #303030;
+    border-radius: 10px;
+}
+.resumen-card span {
+    display: block;
+    color: #aaa;
+    font-size: 12px;
+    line-height: 1.4;
+    min-height: 32px;
+}
+.resumen-card strong {
+    display: block;
+    margin-top: 8px;
+    color: #fff;
+    font-size: 30px;
+}
+.resumen-total { border-color: #8d176f; }
+.resumen-total strong { color: #ff36c5; }
+.filtro-noticias {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 10px 0 20px;
+    color: #aaa;
+    font-size: 13px;
+}
+.filtro-noticias select {
+    min-width: 220px;
+    padding: 11px 13px;
+    background: #151515;
+    color: #fff;
+    border: 1px solid #393939;
+    border-radius: 6px;
+}
+.noticias-admin article button {
+    margin: 12px 10px 0 0;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 6px;
+    background: #e000a5;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+.noticias-admin article button:last-child { background: #61202d; }
+.noticias-admin article button:hover { filter: brightness(1.2); }
+@media (max-width: 900px) {
+    .resumen-admin { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+    .resumen-admin { grid-template-columns: 1fr 1fr; gap: 9px; }
+    .resumen-card { padding: 14px; }
+    .resumen-card strong { font-size: 25px; }
+    .filtro-noticias { align-items: stretch; flex-direction: column; }
+    .filtro-noticias select { width: 100%; }
+}

@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración | GTA VI Noticias</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+    <main class="panel-container">
+
+        <header class="panel-header">
+            <div>
+                <p class="login-subtitle">GTA VI NOTICIAS</p>
+                <h1>Panel de administración</h1>
+                <p class="login-description">
+                    Gestioná las noticias de tu sitio web.
+                </p>
+            </div>
+
+            <button type="button" id="btnCerrarSesion">
+                CERRAR SESIÓN
+            </button>
+        </header>
+
+        <section class="panel-content">
+
+            <div class="panel-section-header">
+                <div>
+                    <h2>Noticias publicadas</h2>
+                    <p>Administrá el contenido de tu página.</p>
+                </div>
+
+                <button type="button" id="btnNuevaNoticia">
+                    + NUEVA NOTICIA
+                </button>
+            </div>
+
+            <div id="root"></div>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="/src/main.jsx"></script>
+
+</body>
+</html>

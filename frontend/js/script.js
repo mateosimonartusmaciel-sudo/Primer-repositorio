@@ -14,7 +14,7 @@ formularioContacto.addEventListener('submit', async function (event) {
 
     try {
 
-        const respuesta = await fetch('http://localhost:3000/api/contacto', {
+        const respuesta = await fetch('http://localhost:3001/api/contacto', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -385,5 +385,101 @@ if (formAnalizador) {
         cajaCargando.classList.add('oculto');
         cajaResultado.classList.remove('oculto');
     });
+
+
+    // ========================================
+    // ACTUALIZAR TARJETAS EXISTENTES DESDE MONGODB
+    // ========================================
+
+    async function cargarNoticiasPublicadas() {
+        const seccionNoticias = document.querySelector('.noticias');
+
+        if (!seccionNoticias) return;
+
+        // Obtiene el identificador de una URL como:
+        // noticia.html?id=lanzamiento
+        function obtenerIdNoticia(valor) {
+            if (!valor || typeof valor !== 'string') return null;
+
+            try {
+                const url = new URL(valor, window.location.href);
+                return url.searchParams.get('id');
+            } catch (error) {
+                return null;
+            }
+        }
+
+        try {
+            const respuesta = await fetch('http://localhost:3001/api/noticias');
+
+            if (!respuesta.ok) {
+                throw new Error('No se pudieron cargar las noticias.');
+            }
+
+            const noticias = await respuesta.json();
+
+            // Relacionar las noticias de MongoDB por su identificador.
+            const noticiasPorId = new Map();
+
+            noticias.forEach((noticia) => {
+                const id = obtenerIdNoticia(noticia.enlace) || noticia.slug;
+
+                if (id) {
+                    noticiasPorId.set(String(id), noticia);
+                }
+            });
+
+            // Buscar las tarjetas originales del HTML.
+            const tarjetas = seccionNoticias.querySelectorAll('article.noticia');
+
+            let actualizadas = 0;
+
+            tarjetas.forEach((tarjeta) => {
+                const enlaceOriginal = tarjeta.getAttribute('data-article-url');
+
+                if (!enlaceOriginal) return;
+
+                const id = obtenerIdNoticia(enlaceOriginal);
+
+                if (!id) return;
+
+                const noticia = noticiasPorId.get(id);
+
+                if (!noticia) return;
+
+                // Actualizar solamente los textos.
+                const categoria = tarjeta.querySelector('.categoria');
+                const titulo = tarjeta.querySelector('h3');
+                const descripcion = tarjeta.querySelector('p');
+
+                if (categoria && noticia.categoria) {
+                    categoria.textContent = noticia.categoria;
+                }
+
+                if (titulo && noticia.titulo) {
+                    titulo.textContent = noticia.titulo;
+                }
+
+                if (descripcion && noticia.descripcion) {
+                    descripcion.textContent = noticia.descripcion;
+                }
+
+                // No modificar la imagen ni los enlaces originales.
+                actualizadas++;
+            });
+
+            console.log(
+                `Tarjetas originales actualizadas desde MongoDB: ${actualizadas}`
+            );
+
+        } catch (error) {
+            console.error(
+                'Error al actualizar las noticias desde MongoDB:',
+                error
+            );
+        }
+    }
+    
+    cargarNoticiasPublicadas();
 
 }
