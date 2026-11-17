@@ -46,6 +46,7 @@ formularioContacto.addEventListener('submit', async function (event) {
 
 });
 
+
 // CONTADOR GTA VI
 
 const fechaLanzamiento = new Date('November 19, 2026 00:00:00');
@@ -58,10 +59,12 @@ function actualizarContador() {
 
     if (diferencia <= 0) {
 
-        document.querySelector('#dias').textContent = 0;
-        document.querySelector('#horas').textContent = 0;
-        document.querySelector('#minutos').textContent = 0;
-        document.querySelector('#segundos').textContent = 0;
+        document.querySelector('.contador-numeros').style.display = 'none';
+
+        document.querySelector('#mensaje-final').style.display = 'block';
+
+        document.querySelector('.estado').innerHTML =
+            '🟢 GTA VI: <strong>¡DISPONIBLE!</strong>';
 
         console.log('¡GTA VI ya está disponible!');
 
@@ -91,6 +94,7 @@ function actualizarContador() {
 actualizarContador();
 
 setInterval(actualizarContador, 1000);
+
 
 
 
@@ -387,99 +391,198 @@ if (formAnalizador) {
     });
 
 
-    // ========================================
-    // ACTUALIZAR TARJETAS EXISTENTES DESDE MONGODB
-    // ========================================
+    
+// =========================================================
+// CARGAR NOTICIAS DESDE MONGODB EN LA PÁGINA PRINCIPAL
+// =========================================================
 
-    async function cargarNoticiasPublicadas() {
-        const seccionNoticias = document.querySelector('.noticias');
+async function cargarNoticiasPublicadas() {
+    const seccionNoticias = document.querySelector('.noticias');
 
-        if (!seccionNoticias) return;
+    if (!seccionNoticias) return;
 
-        // Obtiene el identificador de una URL como:
-        // noticia.html?id=lanzamiento
-        function obtenerIdNoticia(valor) {
-            if (!valor || typeof valor !== 'string') return null;
-
-            try {
-                const url = new URL(valor, window.location.href);
-                return url.searchParams.get('id');
-            } catch (error) {
-                return null;
-            }
-        }
+    // Obtener el ID de una noticia desde su enlace.
+    function obtenerIdNoticia(valor) {
+        if (!valor || typeof valor !== 'string') return null;
 
         try {
-            const respuesta = await fetch('http://localhost:3001/api/noticias');
-
-            if (!respuesta.ok) {
-                throw new Error('No se pudieron cargar las noticias.');
-            }
-
-            const noticias = await respuesta.json();
-
-            // Relacionar las noticias de MongoDB por su identificador.
-            const noticiasPorId = new Map();
-
-            noticias.forEach((noticia) => {
-                const id = obtenerIdNoticia(noticia.enlace) || noticia.slug;
-
-                if (id) {
-                    noticiasPorId.set(String(id), noticia);
-                }
-            });
-
-            // Buscar las tarjetas originales del HTML.
-            const tarjetas = seccionNoticias.querySelectorAll('article.noticia');
-
-            let actualizadas = 0;
-
-            tarjetas.forEach((tarjeta) => {
-                const enlaceOriginal = tarjeta.getAttribute('data-article-url');
-
-                if (!enlaceOriginal) return;
-
-                const id = obtenerIdNoticia(enlaceOriginal);
-
-                if (!id) return;
-
-                const noticia = noticiasPorId.get(id);
-
-                if (!noticia) return;
-
-                // Actualizar solamente los textos.
-                const categoria = tarjeta.querySelector('.categoria');
-                const titulo = tarjeta.querySelector('h3');
-                const descripcion = tarjeta.querySelector('p');
-
-                if (categoria && noticia.categoria) {
-                    categoria.textContent = noticia.categoria;
-                }
-
-                if (titulo && noticia.titulo) {
-                    titulo.textContent = noticia.titulo;
-                }
-
-                if (descripcion && noticia.descripcion) {
-                    descripcion.textContent = noticia.descripcion;
-                }
-
-                // No modificar la imagen ni los enlaces originales.
-                actualizadas++;
-            });
-
-            console.log(
-                `Tarjetas originales actualizadas desde MongoDB: ${actualizadas}`
-            );
-
+            return new URL(valor, window.location.href).searchParams.get('id');
         } catch (error) {
-            console.error(
-                'Error al actualizar las noticias desde MongoDB:',
-                error
-            );
+            return null;
         }
     }
-    
-    cargarNoticiasPublicadas();
+
+    // Obtener la ruta correcta de las imágenes.
+    function obtenerRutaImagen(ruta) {
+        if (!ruta) return '';
+
+        if (/^https?:\/\//i.test(ruta)) return ruta;
+
+        if (ruta.startsWith('/uploads/')) {
+            return `http://localhost:3001${ruta}`;
+        }
+
+        return ruta;
+    }
+
+    // Actualizar el contenido de una tarjeta.
+    function actualizarTarjeta(tarjeta, noticia, id) {
+        const urlNoticia = `noticia.html?id=${encodeURIComponent(id)}`;
+
+        const categoria = tarjeta.querySelector('.categoria');
+        const titulo = tarjeta.querySelector('h3');
+        const descripcion = tarjeta.querySelector('.noticia-contenido p');
+        const imagen = tarjeta.querySelector('img');
+
+        tarjeta.dataset.articleUrl = urlNoticia;
+        tarjeta.setAttribute(
+            'aria-label',
+            `Leer noticia: ${noticia.titulo || ''}`
+        );
+
+        if (categoria) {
+            categoria.textContent = noticia.categoria || 'GTA VI';
+        }
+
+        if (titulo) {
+            titulo.textContent = noticia.titulo || 'Noticia GTA VI';
+        }
+
+        if (descripcion) {
+            descripcion.textContent = noticia.descripcion || '';
+        }
+
+        if (imagen && noticia.imagen) {
+            imagen.src = obtenerRutaImagen(noticia.imagen);
+            imagen.alt = noticia.titulo || 'Noticia GTA VI';
+        }
+
+        tarjeta.querySelectorAll('a').forEach(enlace => {
+            enlace.href = urlNoticia;
+            enlace.setAttribute(
+                'aria-label',
+                `Leer noticia: ${noticia.titulo || ''}`
+            );
+        });
+    }
+
+    try {
+        // Consultar todas las noticias del backend.
+        const respuesta = await fetch(
+            'http://localhost:3001/api/noticias',
+            {
+                cache: 'no-store'
+            }
+        );
+
+        if (!respuesta.ok) {
+            throw new Error('No se pudieron cargar las noticias.');
+        }
+
+        const noticias = await respuesta.json();
+
+        if (!Array.isArray(noticias)) {
+            throw new Error('La respuesta de noticias no es válida.');
+        }
+
+        // Identificar las tarjetas que ya existen en el HTML.
+        const tarjetasPorId = new Map();
+
+        seccionNoticias
+            .querySelectorAll('article.noticia')
+            .forEach(tarjeta => {
+                const id = obtenerIdNoticia(
+                    tarjeta.dataset.articleUrl
+                );
+
+                if (id) {
+                    tarjetasPorId.set(String(id), tarjeta);
+                }
+            });
+
+        // Usar una tarjeta existente como plantilla visual.
+        const plantilla = seccionNoticias.querySelector(
+            'article.noticia'
+        );
+
+        noticias.forEach(noticia => {
+            const id =
+                obtenerIdNoticia(noticia.enlace) ||
+                noticia.slug;
+
+            if (!id) return;
+
+            let tarjeta = tarjetasPorId.get(String(id));
+
+            // Si la noticia todavía no existe en el HTML,
+            // crear una tarjeta nueva.
+            if (!tarjeta && plantilla) {
+                tarjeta = plantilla.cloneNode(true);
+
+                actualizarTarjeta(
+                    tarjeta,
+                    noticia,
+                    String(id)
+                );
+
+                // Permitir abrir la noticia haciendo clic
+                // en cualquier parte de la tarjeta.
+                tarjeta.addEventListener('click', event => {
+                    if (event.target.closest('a')) return;
+
+                    window.location.href =
+                        `noticia.html?id=${encodeURIComponent(id)}`;
+                });
+
+                // Permitir abrirla también con el teclado.
+                tarjeta.addEventListener('keydown', event => {
+                    if (
+                        event.key === 'Enter' ||
+                        event.key === ' '
+                    ) {
+                        event.preventDefault();
+
+                        window.location.href =
+                            `noticia.html?id=${encodeURIComponent(id)}`;
+                    }
+                });
+
+                // Colocar las noticias nuevas al principio.
+                const primeraTarjeta =
+                    seccionNoticias.querySelector('article.noticia');
+
+                if (primeraTarjeta) {
+                    primeraTarjeta.before(tarjeta);
+                } else {
+                    seccionNoticias.appendChild(tarjeta);
+                }
+
+                tarjetasPorId.set(String(id), tarjeta);
+
+            } else if (tarjeta) {
+
+                // Si ya existe, actualizarla sin duplicarla.
+                actualizarTarjeta(
+                    tarjeta,
+                    noticia,
+                    String(id)
+                );
+            }
+        });
+
+        console.log(
+            `Noticias recibidas desde MongoDB: ${noticias.length}`
+        );
+
+    } catch (error) {
+        console.error(
+            'Error al cargar las noticias desde MongoDB:',
+            error
+        );
+    }
+}
+
+// Ejecutar la carga independientemente del analizador de PC.
+cargarNoticiasPublicadas();
 
 }
