@@ -27,9 +27,16 @@ function App() {
 
     function obtenerRutaImagen(ruta) {
         if (!ruta) return '';
+
+        // Las imágenes subidas desde el panel se sirven desde el backend.
         if (/^https?:\/\//i.test(ruta)) return ruta;
-        if (ruta.startsWith('/uploads/')) return `http://localhost:3001${ruta}`;
-        return ruta;
+        if (ruta.startsWith('/uploads/')) {
+            return `http://localhost:3001${ruta}`;
+        }
+
+        // Las imágenes originales pertenecen al frontend.
+        // BASE_URL contempla tanto localhost como GitHub Pages.
+        return `${import.meta.env.BASE_URL}${ruta.replace(/^\/+/, '')}`;
     }
 
     // REFERENCIAS
