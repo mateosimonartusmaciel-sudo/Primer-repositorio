@@ -31,7 +31,7 @@ function App() {
         // Las imágenes subidas desde el panel se sirven desde el backend.
         if (/^https?:\/\//i.test(ruta)) return ruta;
         if (ruta.startsWith('/uploads/')) {
-            return `http://localhost:3001${ruta}`;
+            return `https://gta6backend.onrender.com${ruta}`;
         }
 
         // Las imágenes originales pertenecen al frontend.
@@ -48,7 +48,7 @@ function App() {
         async function cargarNoticias() {
             try {
                 const sesion = await fetch(
-                    'http://localhost:3001/api/administradores/sesion',
+                    'https://gta6backend.onrender.com/api/administradores/sesion',
                     { credentials: 'include' }
                 );
 
@@ -58,7 +58,7 @@ function App() {
                 }
 
                 const respuesta = await fetch(
-                    'http://localhost:3001/api/noticias',
+                    'https://gta6backend.onrender.com/api/noticias',
                     {
                         credentials: 'include',
                         cache: 'no-store'
@@ -132,8 +132,8 @@ function App() {
             const estaEditando = Boolean(noticiaEditando);
 
             const url = estaEditando
-                ? `http://localhost:3001/api/noticias/${noticiaEditando._id}`
-                : 'http://localhost:3001/api/noticias';
+                ? `https://gta6backend.onrender.com/api/noticias/${noticiaEditando._id}`
+                : 'https://gta6backend.onrender.com/api/noticias';
 
             console.log('ENVIANDO:', estaEditando ? 'PUT' : 'POST');
 
@@ -224,7 +224,7 @@ function App() {
 
         try {
             const respuesta = await fetch(
-                `http://localhost:3001/api/noticias/${id}`,
+                `https://gta6backend.onrender.com/api/noticias/${id}`,
                 {
                     method: 'DELETE',
                     credentials: 'include'
@@ -277,7 +277,7 @@ function App() {
 
             try {
                 const respuesta = await fetch(
-                    'http://localhost:3001/api/administradores/logout',
+                    'https://gta6backend.onrender.com/api/administradores/logout',
                     {
                         method: 'POST',
                         credentials: 'include'

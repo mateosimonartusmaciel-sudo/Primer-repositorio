@@ -14,26 +14,29 @@ app.use('/uploads', express.static('uploads'));
 app.use(cors({
     origin: [
         'http://localhost:5173',
-        'http://localhost:4173'
+        'http://localhost:4173',
+        'https://mateosimonartusmaciel-sudo.github.io'
     ],
     credentials: true
 }));
 
 app.use(express.json());
+app.set('trust proxy', 1);
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        secure: false,
+        secure: true,
+        sameSite: 'none',
         maxAge: 1000 * 60 * 60 * 2
     }
 }));
 
 app.use('/api/administradores', administradoresRoutes);
 app.use('/api/noticias', noticiasRoutes);
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.get('/api/estado', (req, res) => {
     res.json({

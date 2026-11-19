@@ -13,7 +13,7 @@ formularioLogin.addEventListener('submit', async (e) => {
     btnLogin.textContent = 'VERIFICANDO...';
 
     try {
-        const respuesta = await fetch('http://localhost:3001/api/administradores/login', {
+        const respuesta = await fetch('https://gta6backend.onrender.com/api/administradores/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
