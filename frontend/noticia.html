@@ -194,30 +194,101 @@ function crearParrafos(texto) {
 }
 
 function mostrarArticulo() {
-  const id = new URLSearchParams(window.location.search).get("id");
-  const articulo = articulos[id];
-  const contenedor = document.getElementById("articulo");
+    const id = new URLSearchParams(window.location.search).get("id");
+    const articulo = articulos[id];
+    const contenedor = document.getElementById("articulo");
 
-  if (!articulo) {
-    contenedor.innerHTML = `<div class="articulo-error"><h1>Artículo no encontrado</h1><p>El enlace puede estar incompleto o no corresponder a una noticia disponible.</p><a href="index.html">Volver a las noticias</a></div>`;
-    return;
-  }
+    // Si es una noticia original, mostrarla normalmente
+    if (articulo) {
+        renderizarArticuloOriginal(articulo, contenedor);
+        return;
+    }
 
-  document.title = `${articulo.titulo} | Portal GTA VI`;
-  contenedor.innerHTML = `
-    <header class="articulo-cabecera">
-      <span class="articulo-categoria">${articulo.categoria}</span>
-      <h1 class="articulo-titulo">${articulo.titulo}</h1>
-      <div class="articulo-meta">${articulo.fecha} · Portal GTA VI</div>
-    </header>
-    <img class="articulo-imagen" src="${articulo.imagen}" alt="${articulo.titulo}">
-    <div class="articulo-cuerpo">
-      ${articulo.secciones.map(([subtitulo, texto]) => `<section><h2>${subtitulo}</h2>${crearParrafos(texto)}</section>`).join("")}
-    </div>
-    <div class="articulo-nota">La información se basa en los materiales oficiales disponibles. Las interpretaciones y datos todavía no confirmados se presentan como tales.</div>
-    <a class="articulo-volver" href="index.html">← Volver a las noticias</a>
-  `;
+    // Si no es original, buscarla en MongoDB
+    fetch(`https://gta6backend.onrender.com/api/noticias/${encodeURIComponent(id)}`)
+        .then(respuesta => {
+            if (!respuesta.ok) {
+                throw new Error("Noticia no encontrada");
+            }
+            return respuesta.json();
+        })
+        .then(noticia => {
+            const imagen = noticia.imagen.startsWith("/uploads/")
+                ? `https://gta6backend.onrender.com${noticia.imagen}`
+                : noticia.imagen;
+
+            document.title = `${noticia.titulo} | Portal GTA VI`;
+
+            contenedor.innerHTML = `
+                <header class="articulo-cabecera">
+                    <span class="articulo-categoria">${noticia.categoria}</span>
+                    <h1 class="articulo-titulo">${noticia.titulo}</h1>
+                    <div class="articulo-meta">
+                        ${new Date(noticia.fecha).toLocaleDateString()} · Portal GTA VI
+                    </div>
+                </header>
+
+                <img class="articulo-imagen" src="${imagen}" alt="${noticia.titulo}">
+
+                <div class="articulo-cuerpo">
+                    <p>${escaparHTML(noticia.contenido || noticia.descripcion)}</p>
+                </div>
+
+                <a class="articulo-volver" href="index.html">
+                    ← Volver a las noticias
+                </a>
+            `;
+        })
+        .catch(() => {
+            mostrarErrorArticulo(contenedor);
+        });
 }
+
+function renderizarArticuloOriginal(articulo, contenedor) {
+    document.title = `${articulo.titulo} | Portal GTA VI`;
+
+    contenedor.innerHTML = `
+        <header class="articulo-cabecera">
+            <span class="articulo-categoria">${articulo.categoria}</span>
+            <h1 class="articulo-titulo">${articulo.titulo}</h1>
+            <div class="articulo-meta">${articulo.fecha} · Portal GTA VI</div>
+        </header>
+
+        <img class="articulo-imagen" src="${articulo.imagen}" alt="${articulo.titulo}">
+
+        <div class="articulo-cuerpo">
+            ${articulo.secciones.map(([subtitulo, texto]) =>
+                `<section><h2>${subtitulo}</h2>${crearParrafos(texto)}</section>`
+            ).join("")}
+        </div>
+
+        <div class="articulo-nota">
+            La información se basa en los materiales oficiales disponibles.
+            Las interpretaciones y datos todavía no confirmados se presentan como tales.
+        </div>
+
+        <a class="articulo-volver" href="index.html">
+            ← Volver a las noticias
+        </a>
+    `;
+}
+
+function escaparHTML(texto) {
+    const elemento = document.createElement("div");
+    elemento.textContent = texto || "";
+    return elemento.innerHTML;
+}
+
+function mostrarErrorArticulo(contenedor) {
+    contenedor.innerHTML = `
+        <div class="articulo-error">
+            <h1>Artículo no encontrado</h1>
+            <p>El enlace puede estar incompleto o no corresponder a una noticia disponible.</p>
+            <a href="index.html">Volver a las noticias</a>
+        </div>
+    `;
+}
+
 mostrarArticulo();
 </script>
 </body>

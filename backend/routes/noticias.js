@@ -35,6 +35,23 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Obtener una noticia por su slug
+router.get('/:slug', async (req, res) => {
+    try {
+        const noticia = await Noticia.findOne({ slug: req.params.slug });
+
+        if (!noticia) {
+            return res.status(404).json({ mensaje: 'Noticia no encontrada' });
+        }
+
+        res.json(noticia);
+
+    } catch (error) {
+        res.status(500).json({ mensaje: 'Error al obtener la noticia' });
+    }
+});
+
+
 router.post('/', verificarAdmin, subirImagen.single('imagen'), async (req, res) => {
     try {
         if (!req.file) {
