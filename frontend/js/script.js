@@ -419,7 +419,7 @@ async function cargarNoticiasPublicadas() {
         if (/^https?:\/\//i.test(ruta)) return ruta;
 
         if (ruta.startsWith('/uploads/')) {
-            return `http://localhost:3001${ruta}`;
+            return `https://gta6backend.onrender.com${ruta}`; 
         }
 
         return ruta;
@@ -469,7 +469,7 @@ async function cargarNoticiasPublicadas() {
     try {
         // Consultar todas las noticias del backend.
         const respuesta = await fetch(
-            'http://localhost:3001/api/noticias',
+            'https://gta6backend.onrender.com/api/noticias',
             {
                 cache: 'no-store'
             }
