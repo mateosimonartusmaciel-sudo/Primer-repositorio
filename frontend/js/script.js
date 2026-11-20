@@ -14,7 +14,7 @@ formularioContacto.addEventListener('submit', async function (event) {
 
     try {
 
-        const respuesta = await fetch('http://localhost:3001/api/contacto', {
+        const respuesta = await fetch('https://gta6backend.onrender.com/api/contacto', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
